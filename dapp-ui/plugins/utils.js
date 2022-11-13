@@ -2,7 +2,7 @@
 
 let account = null
 let libraryContract
-let libraryContractAddress = 'TU9JzacecnRdAQgKRQsMs7Rzy8joE12eAm' // Paste Contract address here
+let libraryContractAddress = 'TS5aiBXBwvmUzFfjnoBWLgHuyLYtPVFvdc' // Paste Contract address here
 let bookRentContract = null
 
 

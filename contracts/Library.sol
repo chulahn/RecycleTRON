@@ -48,6 +48,7 @@ contract Library is Owner {
        uint256 price; // TRX per day
        address owner; // owner of the book
        uint256 counter;
+       uint256 level;
    }
 
    uint256 public bookId;
@@ -75,7 +76,7 @@ contract Library is Owner {
     */
    function addBook(string memory name, string memory description, uint256 price) public returns (bool success) {
        Book memory book = Book(name, description, true, price, _msgSender(), price);
-       book.counter = 11;
+        book.counter = 1;
        books[bookId] = book;
 
        emit NewBook(bookId++);
@@ -99,6 +100,12 @@ contract Library is Owner {
        require(_msgValue() == book.price * _days(startTime, endTime), "Incorrect fund sent.");
 
        _sendTRX(book.owner, _msgValue());
+       book.counter++;
+       if (book.counter == 50) {
+        book.level = 2;
+       } else if (book.counter == 150) {
+        book.level = 3;
+       }
 
        _createTracking(_bookId, startTime, endTime);
 
